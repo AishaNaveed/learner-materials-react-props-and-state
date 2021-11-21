@@ -136,7 +136,7 @@ function App() {
       photo: "https://metro.co.uk/wp-content/uploads/2020/05/PRI_150473631-e1588316954238.jpg?quality=90&strip=all",
       alt: "A dopey looking Siamese cat with its tongue sticking out"
     }
-  ]  );
+  ]);
 
   return (
     <>
@@ -146,8 +146,10 @@ function App() {
       <main>
         <div className="cards__wrapper">
 
-          <CatCard />
-
+          {cats.map(cat => {
+            return <CatCard name={cat.name} species={cat.species} favFoods={cat.favFoods} birthYear={cat.birthYear}
+              photo={cat.photo} alt={cat.alt} />
+          })}
 
         </div>
       </main>
