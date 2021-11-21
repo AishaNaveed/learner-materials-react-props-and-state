@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import Navbar from './components/Navbar'
 import Header from './components/Header'
@@ -7,8 +8,9 @@ import CatCard from './components/CatCard';
 
 function App() {
 
-  const [cats, useCats] = useState([
+  const [cats, setCats] = useState([
     {
+      id: uuidv4(),
       name: "Little Miss Purrfect",
       species: "Cat",
       favFoods: ["wet food", "dry food"],
@@ -17,6 +19,7 @@ function App() {
       alt: "A pretty gray kitten"
     },
     {
+      id: uuidv4(),
       name: "Mr Gwumpy",
       species: "Cat",
       favFoods: ["caviar"],
@@ -25,6 +28,7 @@ function App() {
       alt: "A grumpy looking cat, frowning"
     },
     {
+      id: uuidv4(),
       name: "Dopey",
       species: "Cat",
       favFoods: ["bugs"],
@@ -33,6 +37,7 @@ function App() {
       alt: "A wide eyed cat wearing a knitted shark hat"
     },
     {
+      id: uuidv4(),
       name: "Jumpy",
       species: "Scaredy Cat",
       favFoods: ["not cucumbers!"],
@@ -41,6 +46,7 @@ function App() {
       alt: "A cat cornered by three cucumbers and looking worried about it"
     },
     {
+      id: uuidv4(),
       name: "Meowsalot",
       species: "Cat",
       favFoods: ["tuna", "catnip", "celery"],
@@ -49,6 +55,7 @@ function App() {
       alt: "A fluffy tabby cat lying on its side"
     },
     {
+      id: uuidv4(),
       name: "Cindy Clawford",
       species: "Cat",
       favFoods: ["mice"],
@@ -57,6 +64,7 @@ function App() {
       alt: "A soft focussed, close-up of a kittens face"
     },
     {
+      id: uuidv4(),
       name: "Katy Purry",
       species: "Cat",
       favFoods: ["cigarettes", "coffee"],
@@ -65,6 +73,7 @@ function App() {
       alt: "A cat wearing pink love heart sunglasses"
     },
     {
+      id: uuidv4(),
       name: "Dr. Von Belly-Rub",
       species: "Cat",
       favFoods: ["salt"],
@@ -73,6 +82,7 @@ function App() {
       alt: "A cat wearing a surgeons face mask"
     },
     {
+      id: uuidv4(),
       name: "Blobby",
       species: "Bird?",
       favFoods: ["your soul"],
@@ -81,6 +91,7 @@ function App() {
       alt: "A photoshopped cat flying through the air like a space ship"
     },
     {
+      id: uuidv4(),
       name: "El Taco",
       species: "Cat",
       favFoods: ["tequila", "bar snax"],
@@ -89,6 +100,7 @@ function App() {
       alt: "A cat wearing a Mexican Sombrero drinking tequila"
     },
     {
+      id: uuidv4(),
       name: "Nibbles",
       species: "Hungry Cat",
       favFoods: ["blankets", "feet", "tinsel"],
@@ -97,6 +109,7 @@ function App() {
       alt: "A close up of a cute cat chewing on a blanket"
     },
     {
+      id: uuidv4(),
       name: "BoopySnoot",
       species: "Tiny Cat",
       favFoods: ["milk"],
@@ -105,6 +118,7 @@ function App() {
       alt: "A tiny kitten getting poked in the head"
     },
     {
+      id: uuidv4(),
       name: "Tiger",
       species: "Fearsome Cat",
       favFoods: ["anything that moves", "anything else"],
@@ -113,6 +127,7 @@ function App() {
       alt: "A tiny, fluffy kitten pouncing on a mouse toy"
     },
     {
+      id: uuidv4(),
       name: "Smushi",
       species: "Sushi Cat",
       favFoods: ["ramen"],
@@ -121,6 +136,7 @@ function App() {
       alt: "A cat dressed as sushi, looking unimpressed"
     },
     {
+      id: uuidv4(),
       name: "Doughnut",
       species: "Party Cat",
       favFoods: ["mushrooms"],
@@ -129,6 +145,7 @@ function App() {
       alt: "A kitten photoshopped in space with doughnuts dancing over its head"
     },
     {
+      id: uuidv4(),
       name: "Blep",
       species: "Cat",
       favFoods: ["baked bean juice"],
@@ -137,6 +154,7 @@ function App() {
       alt: "A dopey looking Siamese cat with its tongue sticking out"
     },
     {
+      id: uuidv4(),
       name: "Captain Catface",
       species: "Sea Cattain",
       favFoods: ["fish, rum"],
@@ -147,7 +165,19 @@ function App() {
   ]);
 
   const catCount = cats.length;
-  
+  // cats.map(addID => cats[addID].id = uuid());
+
+  id = () => {
+    const id = this.props.parameters;
+    id.push({
+        key: uuid()
+    });
+    this.setState({
+        id: id
+    });
+    this.props.exportParameter(id);
+};
+
   return (
     <>
       <Navbar />
@@ -157,7 +187,7 @@ function App() {
         <div className="cards__wrapper">
 
           {cats.map(cat => {
-            return <CatCard name={cat.name} species={cat.species} favFoods={cat.favFoods} birthYear={cat.birthYear}
+            return <CatCard key={cat.id} name={cat.name} species={cat.species} favFoods={cat.favFoods} birthYear={cat.birthYear}
               photo={cat.photo} alt={cat.alt} />
           })}
 
