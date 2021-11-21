@@ -3,11 +3,10 @@ import './App.css';
 import Navbar from './components/Navbar'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import CatCard from './components/CatCard';
 
 function App() {
 
-  console.log("Our pretties 😻: ", cats);
-  
   const [cats, useCats] = useState([
     {
       "name": "Little Miss Purrfect",
@@ -139,6 +138,8 @@ function App() {
     }
   ]
   );
+
+  console.log("Our pretties 😻: ", cats);
 
   return (
     <>
