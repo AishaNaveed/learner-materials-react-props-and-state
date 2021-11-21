@@ -1,6 +1,6 @@
 const CatCard = (props) => {
 
-    console.log("CatCard receiving props from App?! Come in App?! 😸 Props received are: ", props);
+    //console.log("CatCard receiving props from App?! Come in App?! 😸 Props received are: ", props);
 
     return (
         <div className="card">
